@@ -12,20 +12,14 @@ class Enemy {
   }
 
   update(dt){
-    this.x += this.speed * dt;
+
     // updateEntities(dt); this is on the engine.js and it helps to control the enemies movement.
 
     // To create the loop we need to first establish what the cut off will be considered to leave the canvas.
     // in this case it will be when x is greater than 5
     this.isOutOffCanvasX = this.x > 5;
     //this.isOutOffCanvasY = this.y < 1;
-    if (this.isOutOffCanvasX) {
-      this.x = -1;
-      // -1 is where I want the enemy to reenter the canvas
-    } else {
-      this.x += dt;
-    }
-     console.log(this.x, this.y); //This was to see the coordinates of my enemies
+
   }
 
 }
@@ -44,7 +38,17 @@ class EnemyOne extends Enemy {
   render(){
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 75);
   }
-
+  update(dt){
+  super.update();
+  this.x += this.speed * dt;
+  if (this.isOutOffCanvasX) {
+    this.x = 0;
+    // -1 is where I want the enemy to reenter the canvas
+  } else {
+    this.x += dt;
+  }
+   console.log(this.x, this.y); //This was to see the coordinates of my enemies
+  }
 }
 const enemyOne = new EnemyOne();
 
@@ -57,6 +61,17 @@ class EnemyTwo extends Enemy {
   // Draw the enemy on the screen, required method for game
   render(){
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 75);
+  }
+  update(dt){
+  super.update();
+  this.x += this.speed * dt;
+  if (this.isOutOffCanvasX) {
+    this.x = 0;
+    // -1 is where I want the enemy to reenter the canvas
+  } else {
+    this.x += dt;
+  }
+   console.log(this.x, this.y); //This was to see the coordinates of my enemies
   }
 }
 const enemyTwo = new EnemyTwo();
@@ -72,6 +87,17 @@ class EnemyThree extends Enemy {
   // Draw the enemy on the screen, required method for game
   render(){
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 75);
+  }
+  update(dt){
+  super.update();
+  this.x += this.speed * dt;
+  if (this.isOutOffCanvasX) {
+    this.x = 0;
+    // -1 is where I want the enemy to reenter the canvas
+  } else {
+    this.x += dt;
+  }
+   console.log(this.x, this.y); //This was to see the coordinates of my enemies
   }
 }
 const enemyThree = new EnemyThree();
