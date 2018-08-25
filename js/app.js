@@ -18,7 +18,7 @@ class Enemy {
     // To create the loop we need to first establish what the cut off will be considered to leave the canvas.
     // in this case it will be when x is greater than 5
     this.isOutOffCanvasX = this.x > 5;
-    this.isOutOffCanvasY = this.y < 1;
+    //this.isOutOffCanvasY = this.y < 1;
     if (this.isOutOffCanvasX) {
       this.x = -1;
       // -1 is where I want the enemy to reenter the canvas
@@ -84,6 +84,22 @@ allEnemies.push(enemyThree);
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
+  /*this.x += this.speed * dt;
+
+    // when off canvas, reset position of enemy to move across again
+    if (this.x > 5) {
+        this.x = -1;
+        this.speed = 1 + Math.floor(Math.random() * 5);
+    }
+
+    // Check for collision between player and enemies
+    /*if (player.x < this.x + 60 &&
+        player.x + 37 > this.x &&
+        player.y < this.y + 25 &&
+        30 + player.y > this.y) {
+        player.x = 200;
+        player.y = 380;
+    }*/
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -108,7 +124,7 @@ Enemy.prototype.render = function() {
   }
   // Draw the player on the screen, required method for game
   render(){
-    ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 75); //75
+    ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83); //75
   }
   handleInput(input){
     switch(input){
@@ -124,15 +140,19 @@ Enemy.prototype.render = function() {
       break;
       case 'up':
       if (this.y > 0){
-        this.y = this.y+1;
-      }
-      break;
-      case 'dowm':
-      if (this.y < 5){
         this.y = this.y-1;
       }
+      break;
+      case 'down':
+        if (this.y < 5){
+          this.y = this.y+1;
+        }
+      }
+      this.moving=true;
+
     }
-  }
+
+
 }
 
 
