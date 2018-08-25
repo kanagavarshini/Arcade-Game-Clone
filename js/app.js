@@ -101,12 +101,9 @@ Enemy.prototype.render = function() {
     this.sprite = 'images/char-boy.png';
     this.x = 2;
     this.y = 5;
-    this.width = 101;
-    this.height = 83;
-    this.startX = this.width * 2;
-    this.startY = (this.height * 5) - 20;
-    //this.hit = false;
-    //this.moving = false;
+    this.hit = false;
+    this.moving = false;
+
 
   }
   // Draw the player on the screen, required method for game
@@ -117,27 +114,25 @@ Enemy.prototype.render = function() {
     switch(input){
       case 'left':
       if (this.x > 0){
-        this.x -= this.width;
+        this.x = this.x-1;
       }
       break;
       case 'right':
-      if (this.x < this.width * 4){
-        this.x +=this.width;
+      if (this.x <  4){
+        this.x = this.x+1;
       }
       break;
       case 'up':
       if (this.y > 0){
-        this.y -= this.height;
+        this.y = this.y+1;
       }
       break;
       case 'dowm':
-      if (this.y < this.height *4){
-        this.y += this.height;
+      if (this.y < 5){
+        this.y = this.y-1;
       }
     }
-
   }
-
 }
 
 
