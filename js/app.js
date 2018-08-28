@@ -30,7 +30,7 @@ class EnemyOne extends Enemy {
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 75);
   }
   update(dt){
-  ////super.update();
+
   this.x += this.speed * dt;
   if (this.x>5){
   this.x = -1;
@@ -55,7 +55,7 @@ class EnemyTwo extends Enemy {
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 75);
   }
   update(dt){
-  //super.update();
+
   this.x += this.speed * dt;
   if (this.x>5) {
     this.x = -1;
@@ -82,7 +82,7 @@ class EnemyThree extends Enemy {
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 75);
   }
   update(dt){
-  //super.update();
+
   this.x += this.speed * dt;
   if (this.x>5) {
     this.x = -1;
@@ -138,13 +138,40 @@ Enemy.prototype.render = function() {
     this.y = 5;
     this.hit = false;
     this.moving = false;
-
+    this.victory = false;
 
   }
   // Draw the player on the screen, required method for game
   render(){
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83); //75
   }
+  //check for collisions
+  update(){
+   for(let enemy of allEnemies){
+    if (this.y === enemy.y){
+      if(this.x >= enemy.x - 0.5 && this.x <= enemy.x + 0.5){
+        // if the above is true we need to make the player move to the start postion which is  2,5
+        this.x = 2;
+        this.y= 5;
+        this.hit = true;
+        console.log("HIT");
+        alert("Hit");
+      }
+    }
+      if(this.y < 1){
+        this.hit = false;
+        this.victory = true;
+        console.log("you good");
+
+      }
+
+  }
+  if(this.victory === true){
+    alert("game won");
+    win.cancelAnimationFrame(id);
+    }
+
+}
   handleInput(input){
     switch(input){
       case 'left':
