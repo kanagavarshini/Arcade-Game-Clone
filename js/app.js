@@ -125,7 +125,7 @@ Enemy.prototype.render = function() {
   }
   // Draw the player on the screen, required method for game
   render(){
-    ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83); //75
+    ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 75); //75
   }
   //check for collisions
   update(){
@@ -141,20 +141,31 @@ Enemy.prototype.render = function() {
       }
     }
   }
-
-
-
-
   if(this.y === 0){
+    this.hit = false;
+    this.victory = true;
+    //player.x = 2;
+    //player.y = 5;
+    alert("GAME OVER");
+   console.log("victory");
+    window.location.reload();
+
+
+
+
+  }
+
+
+
+  /*if(this.y === 0){
     this.hit = false;
     this.victory = true;
     setTimeout(function(){ alert("GAME OVER");
     console.log("victory");
     }, 1000);
-    enemy.render();
-    player.render();
 
-  }
+
+  }*/
 }
 
   handleInput(input){
