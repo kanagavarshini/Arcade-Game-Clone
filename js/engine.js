@@ -22,8 +22,9 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
-        
+        lastTime,
+        id;
+
 
     canvas.width = 505;
     canvas.height = 606;
@@ -67,6 +68,7 @@ var Engine = (function(global) {
         reset();
         lastTime = Date.now();
         main();
+        //victory();
     }
 
     /* This function is called by main (our game loop) and itself calls all
@@ -78,6 +80,11 @@ var Engine = (function(global) {
      * functionality this way (you could just implement collision detection
      * on the entities themselves within your app.js file).
      */
+  /*  function victory(){
+      victory();
+    }*/
+
+
     function update(dt) {
         updateEntities(dt);
         // checkCollisions();

@@ -103,25 +103,7 @@ allEnemies.push(enemyThree);
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-  /*this.x += this.speed * dt;
 
-    // when off canvas, reset position of enemy to move across again
-    if (this.x > 5) {
-        this.x = -1;
-        this.speed = 1 + Math.floor(Math.random() * 5);
-    }
-
-    // Check for collision between player and enemies
-    /*if (player.x < this.x + 60 &&
-        player.x + 37 > this.x &&
-        player.y < this.y + 25 &&
-        30 + player.y > this.y) {
-        player.x = 200;
-        player.y = 380;
-    }*/
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
 };
 
 // Draw the enemy on the screen, required method for game
@@ -158,20 +140,23 @@ Enemy.prototype.render = function() {
         alert("Hit");
       }
     }
-      if(this.y < 1){
-        this.hit = false;
-        this.victory = true;
-        console.log("you good");
+  }
 
-      }
+
+
+
+  if(this.y === 0){
+    this.hit = false;
+    this.victory = true;
+    setTimeout(function(){ alert("GAME OVER");
+    console.log("victory");
+    }, 1000);
+    enemy.render();
+    player.render();
 
   }
-  if(this.victory === true){
-    alert("game won");
-    win.cancelAnimationFrame(id);
-    }
-
 }
+
   handleInput(input){
     switch(input){
       case 'left':
@@ -197,7 +182,6 @@ Enemy.prototype.render = function() {
       this.moving=true;
 
     }
-
 
 }
 
@@ -226,3 +210,11 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+      /*else{
+        if(this.y === 0){
+          this.hit = false;
+          setTimeout(function(){ alert("GAME OVER");
+          console.log("victory");
+          }, 3000);
+         win.cancelAnimationFrame();
+      }*/
