@@ -146,10 +146,10 @@ Enemy.prototype.render = function() {
     this.victory = true;
     //player.x = 2;
     //player.y = 5;
+
+    window.location.reload();
     alert("GAME OVER");
    console.log("victory");
-    window.location.reload();
-
 
 
 
