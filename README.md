@@ -1,5 +1,6 @@
 
-             ## FRONTEND-NANODEGREE-ARCADE-GAME-CLONE
+
+## FRONTEND-NANODEGREE-ARCADE-GAME-CLONE
 --------------------------------------------------------------
 ### Table of Contents
 --------------------------------------------------------------
